@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Data Visualization</title>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+        <script src="https://unpkg.com/d...@7.6.1/dist/d3.min.js"></script>
+</head>
+
+<body class="container py-4">
+
+    <h3 class="mb-0 mt-4">UK Power Generation Mix</h3>
+    <div class="mx-sm-auto mx-0 col-lg-6 col-12 text-center px-0">
+        <div id="donut" class="mx-0 px-0 col-12 mb-1"></div>
+        <small>Source: <a href="https://d25d2506sfb94s.cloudfront.net/cumulus_uploads/document/np6jy2g6j4/7.9.18%20-%20Ice%20Cream%20Results.pdf"
+                target="blank">YouGov</a></small>
+    </div>
+    <div class="buttons text-center col-12 mt-3">
+        <!-- Automate by showing actual date -->
+        <button id="dayb4yesterday" class="btn btn-secondary my-1 col-12 col-md-4 col-lg-3">Day before yesterday</button>
+        <button id="yesterday" class="btn btn-secondary my-1 col-12 col-md-4 col-lg-3">Yesterday</button>
+        <button id="today" class="btn btn-secondary my-1 col-12 col-md-4 col-lg-3">Today</button>
+    </div>
+
+    <p id="datetime"></p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
+    <script src="donutChart.js"></script>
+</body>
+<!-- <script>
+  // Get current date and time
+  var now = new Date();
+  var datetime = now.toLocaleString();
+
+  // Insert date and time into HTML
+  document.getElementById("datetime").innerHTML = datetime;
+  </script>
+  <script>
+    {
+  const height = Math.min(width, 500);
+  const radius = Math.min(width, height) / 2;
+
+  const arc = d3.arc()
+      .innerRadius(radius * 0.67)
+      .outerRadius(radius - 1);
+
+  const pie = d3.pie()
+      .padAngle(1 / radius)
+      .sort(null)
+      .value(d => d.value);
+
+  const color = d3.scaleOrdinal()
+      .domain(data.map(d => d.name))
+      .range(d3.quantize(t => d3.interpolateSpectral(t * 0.8 + 0.1), data.length).reverse());
+
+  const svg = d3.create("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr("viewBox", [-width / 2, -height / 2, width, height])
+      .attr("style", "max-width: 100%; height: auto;");
+
+  svg.append("g")
+    .selectAll()
+    .data(pie(data))
+    .join("path")
+      .attr("fill", d => color(d.data.name))
+      .attr("d", arc)
+    .append("title")
+      .text(d => `${d.data.name}: ${d.data.value.toLocaleString()}`);
+
+  svg.append("g")
+      .attr("font-family", "sans-serif")
+      .attr("font-size", 12)
+      .attr("text-anchor", "middle")
+    .selectAll()
+    .data(pie(data))
+    .join("text")
+      .attr("transform", d => `translate(${arc.centroid(d)})`)
+      .call(text => text.append("tspan")
+          .attr("y", "-0.4em")
+          .attr("font-weight", "bold")
+          .text(d => d.data.name))
+      .call(text => text.filter(d => (d.endAngle - d.startAngle) > 0.25).append("tspan")
+          .attr("x", 0)
+          .attr("y", "0.7em")
+          .attr("fill-opacity", 0.7)
+          .text(d => d.data.value.toLocaleString("en-US")));
+
+  return svg.node();
+}
+  </script>
+   -->
+</html>
